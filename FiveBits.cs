@@ -27,7 +27,7 @@ class FiveBits
             int max_index  = MAX_BITS - 1;
             for(int x = 0; x < MAX_BITS; x++)
             {
-                values[max_index] = tempValues[x];
+                values[max_index--] = tempValues[x];
             }
         }
     }
