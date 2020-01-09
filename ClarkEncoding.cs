@@ -1,4 +1,4 @@
-namespace Clark.Text
+namespace SAIB.Text
 {
     class Encoding
     {
@@ -37,5 +37,33 @@ namespace Clark.Text
             '.',
             '.',
         };
+
+        public static FiveBits[] ToFiveBits(string input)
+        {
+            byte[] buffer = GetBytes(input);
+            FiveBits[] result = new FiveBits[buffer.Length];
+            for(int x = 0; x < buffer.Length; x++)
+            {
+                result[x] = new FiveBits(buffer[x]);
+            }
+            return result;
+        }
+
+        public static byte[] GetBytes(string input)
+        {
+            byte[] result = new byte[input.Length];
+            for (int x = 0; x < input.Length; x++)
+            {
+                for (int y = 0; y < Table.Length; y++)
+                {
+                    if(input[x] == Table[y])
+                    {
+                        result[x] = (byte)y;
+                    }
+                }
+            }
+            return result;
+        }
+
     }
 }
